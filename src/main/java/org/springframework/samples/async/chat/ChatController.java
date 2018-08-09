@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class ChatController {
 	@ResponseBody
 	public DeferredResult<List<String>> getMessages(@RequestParam int messageIndex) {
 
-		//获取消息的时候创建一个新的deferredResult保存到内存中,当异步请求完成的时候，移除这个result
+		//获取消息的时候创建一个新的deferredResult保存到内存中,当异步请求完成的时候，移除这个result,timeout默认 30秒
 		final DeferredResult<List<String>> deferredResult = new DeferredResult<List<String>>(null, Collections.emptyList());
 		this.chatRequests.put(deferredResult, messageIndex);
 
@@ -42,6 +43,13 @@ public class ChatController {
 			@Override
 			public void run() {
 				chatRequests.remove(deferredResult);
+			}
+		});
+
+		deferredResult.onTimeout(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("异步处理超时了... 主动结束并且 开启新的轮询");
 			}
 		});
 
