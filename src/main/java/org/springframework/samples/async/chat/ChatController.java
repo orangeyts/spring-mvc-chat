@@ -31,13 +31,6 @@ public class ChatController {
 	}
 
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView getMessages() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("chat");
-		return modelAndView;
-	}
-
-	@RequestMapping(method=RequestMethod.GET)
 	@ResponseBody
 	public DeferredResult<List<String>> getMessages(@RequestParam int messageIndex) {
 

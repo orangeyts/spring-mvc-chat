@@ -3,9 +3,13 @@
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
       version="3.0">
 
+	<!--
+	用来包含多个fragment的，这里没有，因此不需要，否则无法启动
 	<absolute-ordering>
 		<name>MyWebFragment</name>
 		<name>spring_web</name>
 	</absolute-ordering>
+
+	-->
 
 </web-app>
