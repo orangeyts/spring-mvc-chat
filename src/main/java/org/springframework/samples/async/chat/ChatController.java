@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * http://localhost:8081/spring-mvc-chat/
+ */
 @Controller
 @RequestMapping("/mvc/chat")
 public class ChatController {
