@@ -4,6 +4,9 @@ package org.springframework.samples.async.chat.servlet;
 /**
  * https://blog.csdn.net/renfufei/article/details/53512110
  * http://strongant.iteye.com/blog/2156766
+ *
+ * 讲解的不错 https://blog.csdn.net/liuchuanhong1/article/details/78744138
+ *
  */
 import java.io.IOException;
 import java.io.PrintWriter;
